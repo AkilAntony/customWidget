@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Form from 'react-jsonschema-form';
+import RangeSliderWidget from './RangeSliderWidget';
 
-function App() {
+const schema = {
+  type: 'object',
+  properties: {
+    range: {
+      type: 'integer',
+      minimum: 0,
+      maximum: 100,
+    },
+  },
+};
+
+const uiSchema = {
+  range: {
+    'ui:widget': RangeSliderWidget,
+  },
+};
+
+const App = () => {
+  const onSubmit = (formData) => {
+    console.log('Form data:', formData);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Custom Range Slider</h1>
+      <Form
+        schema={schema}
+        uiSchema={uiSchema}
+        onSubmit={onSubmit}
+      />
+    </>
   );
-}
+};
 
 export default App;
