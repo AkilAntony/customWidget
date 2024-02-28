@@ -1,3 +1,58 @@
+# RangeSliderWidget Component
+The RangeSliderWidget component is a React component used to display a range slider input field along with its current value.
+
+## Usage
+- To use the RangeSliderWidget component, follow these steps:
+
+- Import the RangeSliderWidget component into your React application:
+
+ 
+import RangeSliderWidget from './RangeSliderWidget';
+Use the RangeSliderWidget component in your JSX code, providing the necessary props:
+
+ 
+<RangeSliderWidget schema={schema} value={value} onChange={handleChange} />
+schema: An object containing information about the slider range, including minimum and maximum values.
+value: The current value of the range slider.
+onChange: A function to handle changes in the slider value.
+
+## Example
+- Here's an example of how you can use the RangeSliderWidget component:
+- 
+import React, { useState } from 'react';
+import RangeSliderWidget from './RangeSliderWidget';
+
+const App = () => {
+  const [sliderValue, setSliderValue] = useState(50);
+
+  const handleChange = (newValue) => {
+    setSliderValue(newValue);
+  };
+
+  return (
+    <div>
+      <h1>RangeSliderWidget Example</h1>
+      <RangeSliderWidget
+        schema={{ minimum: 0, maximum: 100 }}
+        value={sliderValue}
+        onChange={handleChange}
+      />
+      <p>Current Value: {sliderValue}</p>
+    </div>
+  );
+};
+
+export default App;
+## Props
+- schema: An object containing information about the slider range, including minimum and maximum values.
+
+- value: The current value of the range slider.
+
+- onChange A function to handle changes in the slider value.
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
